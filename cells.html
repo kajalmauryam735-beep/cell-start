@@ -1,0 +1,626 @@
+<!-- Save this file as mockup.html -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>CellStart — ChronoNAD+ (Mockup)</title>
+<meta name="description" content="ChronoNAD+ — premium wellness support. Mockup single-page for Dislapharm / CellStart internship assignment." />
+<style>
+  /* -------------------------
+     Brand color & typography
+     Header Font: Cabin SemiBold or Poppins SemiBold (fallbacks used)
+     Body Text Font: Source Sans Pro Regular (fallbacks used)
+     Header Color: #002f5c
+     Body Text Color: #005706
+     ------------------------- */
+  :root{
+    --brand-head: #002f5c;
+    --brand-body: #005706;
+    --accent: #f6a800;
+    --muted:#efefef;
+    --bg: #ffffff;
+    --glass: rgba(255,255,255,0.6);
+    --radius: 18px;
+    --card-pad: 20px;
+    --max-width: 1100px;
+  }
+
+  /* basic reset */
+  *{box-sizing: border-box; margin:0; padding:0}
+  html,body{height:100%}
+  body{
+    font-family: "Source Sans Pro", "Helvetica Neue", Arial, sans-serif;
+    color: var(--brand-body);
+    background: linear-gradient(180deg,#fbfdff 0%, #f7fbf6 100%);
+    -webkit-font-smoothing:antialiased;
+    -moz-osx-font-smoothing:grayscale;
+    line-height:1.45;
+  }
+
+  a{color:inherit; text-decoration:none}
+  .container{
+    width: 94%;
+    max-width: var(--max-width);
+    margin: 0 auto;
+  }
+
+  /* Header / navbar */
+  header{
+    padding: 18px 0;
+    position: sticky;
+    top: 0;
+    z-index: 40;
+    backdrop-filter: blur(6px);
+    background: linear-gradient(180deg, rgba(255,255,255,0.65), rgba(255,255,255,0.45));
+    box-shadow: 0 6px 18px rgba(2,47,92,0.04);
+  }
+  .nav{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+  }
+  .brand{
+    display:flex;
+    gap:12px;
+    align-items:center;
+  }
+  .brand .logo{
+    width:48px; height:48px; border-radius:12px; padding:8px;
+    display:grid; place-items:center;
+    background: linear-gradient(135deg, rgba(0,47,92,0.06), rgba(0,87,6,0.03));
+    border: 1px solid rgba(0,47,92,0.06);
+  }
+  .brand h1{
+    font-family: "Poppins", "Cabin", "Segoe UI", system-ui, -apple-system;
+    font-weight: 600;
+    color: var(--brand-head);
+    font-size:18px;
+    letter-spacing:0.2px;
+  }
+  .nav-actions{display:flex; gap:12px; align-items:center}
+  .btn{
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    border-radius:12px;
+    padding:10px 14px;
+    font-weight:600;
+    cursor:pointer;
+    border: none;
+  }
+  .btn-cta{
+    background: linear-gradient(90deg,var(--accent), #ffb74a);
+    color:#0b1a12;
+    box-shadow: 0 8px 24px rgba(246,168,0,0.18);
+  }
+  .btn-ghost{
+    background:transparent;
+    color:var(--brand-head);
+    border:1px solid rgba(0,47,92,0.06);
+    padding:9px 12px;
+  }
+
+  /* Hero */
+  .hero{
+    display:grid;
+    grid-template-columns: 1fr 460px;
+    gap:28px;
+    align-items:center;
+    padding:44px 0;
+  }
+  @media (max-width:980px){
+    .hero{grid-template-columns: 1fr; padding:28px 0;}
+  }
+  .hero-card{
+    background: linear-gradient(180deg,#ffffff, #fbfbff);
+    border-radius: var(--radius);
+    padding:28px;
+    box-shadow: 0 18px 48px rgba(2,47,92,0.06);
+    border:1px solid rgba(2,47,92,0.03);
+  }
+  .kicker{
+    display:inline-block;
+    font-weight:700;
+    font-size:12px;
+    color:var(--brand-head);
+    background:linear-gradient(90deg, rgba(0,47,92,0.06), rgba(0,87,6,0.02));
+    padding:8px 10px;
+    border-radius:999px;
+    margin-bottom:12px;
+    letter-spacing:0.6px;
+  }
+  h2.hero-title{
+    font-family: "Poppins", "Cabin", "Segoe UI", system-ui, -apple-system;
+    font-weight:700;
+    color:var(--brand-head);
+    font-size: clamp(24px, 3.1vw, 34px);
+    line-height:1.05;
+    margin-bottom:12px;
+  }
+  p.lead{
+    color: var(--brand-body);
+    opacity:0.95;
+    margin-bottom:18px;
+    font-size:15px;
+  }
+  .hero-ctas{display:flex; gap:12px; flex-wrap:wrap}
+  .meta{
+    display:flex;
+    gap:12px;
+    margin-top:18px;
+    align-items:center;
+  }
+  .pill{
+    background:var(--muted);
+    padding:8px 10px;
+    border-radius:999px;
+    font-weight:700;
+    color:var(--brand-head);
+    font-size:13px;
+  }
+
+  /* Product art column */
+  .product-art{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:16px;
+  }
+  .bottle-wrap{
+    width:320px;
+    max-width:78%;
+    background: linear-gradient(180deg, rgba(0,47,92,0.03), rgba(0,87,6,0.02));
+    border-radius:22px;
+    padding:20px;
+    display:flex;
+    justify-content:center;
+    box-shadow: 0 20px 40px rgba(0,80,30,0.04);
+  }
+  /* small tagline under image */
+  .tagline{
+    text-align:center;
+    margin-top:12px;
+    font-size:13px;
+    color:var(--brand-head);
+    opacity:0.85;
+    font-weight:600;
+  }
+
+  /* features / cards */
+  .features{
+    display:grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap:18px;
+    margin-top:28px;
+  }
+  @media (max-width:980px){
+    .features{grid-template-columns: repeat(1,1fr)}
+  }
+  .card{
+    background: linear-gradient(180deg,#fff,#fcfffb);
+    border-radius:14px;
+    padding:var(--card-pad);
+    border:1px solid rgba(0,47,92,0.03);
+    box-shadow: 0 10px 26px rgba(0,87,6,0.03);
+  }
+  .card .title{
+    font-family: "Poppins", "Cabin", system-ui;
+    font-weight:600;
+    color:var(--brand-head);
+    margin-bottom:8px;
+    font-size:15px;
+  }
+  .card p{font-size:14px; color:var(--brand-body); opacity:0.95}
+
+  /* infographic section */
+  .infographic{
+    margin: 36px 0;
+    background: linear-gradient(180deg,#ffffff,#fbfffb);
+    border-radius: 20px;
+    padding:22px;
+    display:grid;
+    grid-template-columns: 1fr 360px;
+    gap:20px;
+    align-items:center;
+    border:1px solid rgba(0,47,92,0.03);
+  }
+  @media (max-width:980px){ .infographic{grid-template-columns:1fr} }
+
+  .chart-area{
+    padding:12px;
+  }
+  .chart-title{
+    font-family: "Poppins", "Cabin", system-ui;
+    font-weight:700;
+    color:var(--brand-head);
+    margin-bottom:12px;
+    font-size:16px;
+  }
+  .chart-sub{color:var(--brand-body); font-size:14px; margin-bottom:8px}
+
+  /* CTA strip */
+  .cta-strip{
+    margin:40px 0;
+    background: linear-gradient(90deg, rgba(0,47,92,0.03), rgba(0,87,6,0.02));
+    border-radius:16px;
+    padding:18px;
+    display:flex;
+    gap:18px;
+    align-items:center;
+    justify-content:space-between;
+  }
+  @media (max-width:680px){
+    .cta-strip{flex-direction:column; align-items:stretch}
+  }
+  .cta-left h3{font-family: "Poppins", "Cabin"; color:var(--brand-head); margin-bottom:6px}
+  .cta-left p{color:var(--brand-body)}
+
+  /* footer */
+  footer{
+    margin-top:44px;
+    padding:32px 0;
+    color:var(--brand-head);
+    font-size:13px;
+  }
+  .foot-grid{
+    display:flex;
+    gap:18px;
+    justify-content:space-between;
+    flex-wrap:wrap;
+  }
+
+  /* small helpers */
+  .muted{color:#6b6b6b; font-size:13px}
+  .badge{
+    font-weight:700; font-size:12px; padding:8px 10px; border-radius:999px;
+    display:inline-block; background:rgba(0,87,6,0.06); color:var(--brand-body);
+  }
+
+  /* subtle animation */
+  .bottle-svg{ transform-origin:center; animation: float 6s ease-in-out infinite; }
+  @keyframes float {
+    0%{ transform: translateY(0px) rotate(-0.6deg) }
+    50%{ transform: translateY(-8px) rotate(0.6deg) }
+    100%{ transform: translateY(0px) rotate(-0.6deg) }
+  }
+
+  /* accessibility */
+  .sr-only{
+    position:absolute!important;
+    width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;
+  }
+
+  /* smooth landing for anchored CTA */
+  html { scroll-behavior: smooth; }
+</style>
+</head>
+<body>
+<header>
+  <div class="container nav" role="navigation" aria-label="Main navigation">
+    <div class="brand" aria-hidden="false">
+      <div class="logo" aria-hidden="true">
+        <!-- tiny logo SVG -->
+        <svg width="36" height="36" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <rect x="0.5" y="0.5" width="23" height="23" rx="5" fill="#fff"/>
+          <path d="M6 12c1.2-2 4-3 6-3s4.8 1 6 3" stroke="#002f5c" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="12" cy="8" r="1.6" fill="#f6a800"/>
+        </svg>
+      </div>
+      <div>
+        <h1>CellStart</h1>
+        <div class="muted" style="font-size:12px;margin-top:3px">ChronoNAD+ — wellness with attitude</div>
+      </div>
+    </div>
+
+    <div class="nav-actions">
+      <button class="btn btn-ghost" onclick="document.getElementById('benefits').scrollIntoView({behavior:'smooth'})">Benefits</button>
+      <button class="btn btn-ghost" onclick="document.getElementById('infographic').scrollIntoView({behavior:'smooth'})">Science</button>
+      <button class="btn btn-cta" onclick="openOrder()">Order sample</button>
+    </div>
+  </div>
+</header>
+
+<main class="container" role="main">
+  <!-- HERO -->
+  <section class="hero" aria-labelledby="hero-heading">
+    <div class="hero-card" role="region" aria-label="Product introduction">
+      <div class="kicker">NEW · Clinically-inspired formula</div>
+      <h2 id="hero-heading" class="hero-title">ChronoNAD+ — Restore your cellular rhythm</h2>
+      <p class="lead">A premium NAD+ support formula engineered for daily resilience and circadian-friendly energy. Made for modern lives — clinically inspired, thoughtfully crafted.</p>
+
+      <div class="hero-ctas" role="group" aria-label="Primary CTAs">
+        <button class="btn btn-cta" onclick="openOrder()" aria-label="Order ChronoNAD sample">Order sample</button>
+        <a href="#infographic" class="btn btn-ghost">See the science</a>
+      </div>
+
+      <div class="meta" aria-hidden="false">
+        <div class="pill">30 day supply</div>
+        <div class="pill">Non-GMO · Vegan · GMP</div>
+        <div style="margin-left:auto" class="muted">Starting at <strong style="color:var(--brand-head)">$49</strong></div>
+      </div>
+
+      <!-- Feature cards -->
+      <div class="features" style="margin-top:22px;">
+        <div class="card" aria-hidden="false">
+          <div class="title">Circadian-aligned delivery</div>
+          <p>Timed-release matrix designed to support NAD+ pathways with a steady release that respects your sleep–wake rhythm.</p>
+        </div>
+        <div class="card">
+          <div class="title">Clinically-inspired actives</div>
+          <p>Patented precursors and co-factors chosen for synergistic cellular support and everyday cognitive clarity.</p>
+        </div>
+        <div class="card">
+          <div class="title">Luxury wellness experience</div>
+          <p>Premium, inclusive branding and an approachable ritual that makes health feel elevated — not clinical.</p>
+        </div>
+      </div>
+    </div>
+
+    <aside class="product-art" aria-label="Product art">
+      <div class="bottle-wrap" role="img" aria-label="ChronoNAD product bottle illustration">
+        <!-- Inline SVG product bottle (original artwork style, accessible, no external images) -->
+        <svg class="bottle-svg" width="220" height="380" viewBox="0 0 220 380" xmlns="http://www.w3.org/2000/svg" role="presentation" aria-hidden="true">
+          <defs>
+            <linearGradient id="g1" x1="0" x2="1" y1="0" y2="1">
+              <stop offset="0" stop-color="#ffffff"/>
+              <stop offset="1" stop-color="#f6fbff"/>
+            </linearGradient>
+            <linearGradient id="g2" x1="0" x2="1" y1="0" y2="1">
+              <stop offset="0" stop-color="#002f5c" stop-opacity="0.95" />
+              <stop offset="1" stop-color="#005706" stop-opacity="0.9" />
+            </linearGradient>
+          </defs>
+
+          <!-- bottle shadow -->
+          <ellipse cx="110" cy="355" rx="80" ry="12" fill="rgba(2,47,92,0.06)"/>
+          <!-- bottle body -->
+          <g transform="translate(20,10)">
+            <rect x="20" y="40" width="160" height="270" rx="20" fill="url(#g1)" stroke="rgba(0,47,92,0.04)" stroke-width="1.8"/>
+            <rect x="44" y="50" width="112" height="220" rx="14" fill="url(#g2)" opacity="0.12"/>
+            <!-- label -->
+            <rect x="36" y="150" width="148" height="110" rx="12" fill="#fff" stroke="rgba(0,47,92,0.04)"/>
+            <text x="110" y="182" font-family="Poppins, Cabin, Arial" font-size="18" font-weight="700" text-anchor="middle" fill="#002f5c">ChronoNAD+</text>
+            <text x="110" y="200" font-family="Source Sans Pro, Arial" font-size="12" text-anchor="middle" fill="#005706" opacity="0.95">circadian NAD+ support</text>
+            <!-- small gold accent -->
+            <rect x="76" y="222" width="68" height="6" rx="3" fill="#f6a800"/>
+            <!-- cap -->
+            <rect x="70" y="14" width="80" height="36" rx="6" fill="#002f5c"/>
+            <rect x="84" y="22" width="52" height="20" rx="4" fill="#fff" opacity="0.06"/>
+            <!-- pill icon on label -->
+            <g transform="translate(66,250)">
+              <rect x="0" y="0" width="28" height="14" rx="8" fill="#e8f7ef" stroke="#b7e6c6"/>
+              <rect x="34" y="0" width="84" height="14" rx="8" fill="#fef7ea" stroke="#f6d79a"/>
+            </g>
+          </g>
+        </svg>
+      </div>
+      <div style="max-width:320px">
+        <div class="tagline">A modern ritual — high efficacy, low fuss.</div>
+        <div class="muted" style="margin-top:8px; font-size:13px">Designed for daily use. Laboratory-grade sourcing. Third-party tested.</div>
+      </div>
+    </aside>
+  </section>
+
+  <!-- BENEFITS SECTION -->
+  <section id="benefits" aria-labelledby="benefits-heading" style="margin-top:10px">
+    <div class="hero-card" style="padding:20px;">
+      <h3 id="benefits-heading" style="font-family:'Poppins', 'Cabin'; color:var(--brand-head); margin-bottom:10px;">Benefits that respect your rhythm</h3>
+      <div style="display:grid; grid-template-columns: 1fr 1fr; gap:18px;">
+        <div style="padding:16px;">
+          <div style="display:flex; gap:12px; align-items:flex-start;">
+            <!-- icon -->
+            <svg width="44" height="44" viewBox="0 0 24 24" aria-hidden="true">
+              <circle cx="12" cy="12" r="10" fill="#f6fbff" stroke="#002f5c" stroke-opacity="0.08"></circle>
+              <path d="M12 7v5l3 3" stroke="#005706" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" fill="none"></path>
+            </svg>
+            <div>
+              <div style="font-weight:700; color:var(--brand-head)">Sustainable energy</div>
+              <div class="muted">Supports cellular ATP pathways associated with sustained, non-jittery energy.</div>
+            </div>
+          </div>
+        </div>
+        <div style="padding:16px;">
+          <div style="display:flex; gap:12px; align-items:flex-start;">
+            <svg width="44" height="44" viewBox="0 0 24 24" aria-hidden="true">
+              <rect x="0" y="0" width="24" height="24" rx="6" fill="#fff" stroke="#005706" stroke-opacity="0.06"></rect>
+              <path d="M6 12h12" stroke="#002f5c" stroke-width="1.6" stroke-linecap="round"/>
+              <path d="M8 9h.01M16 9h.01M8 15h.01M16 15h.01" stroke="#005706" stroke-width="1.6" stroke-linecap="round" />
+            </svg>
+            <div>
+              <div style="font-weight:700; color:var(--brand-head)">Cognitive clarity</div>
+              <div class="muted">Ingredients selected to support mental focus and recovery after taxing days.</div>
+            </div>
+          </div>
+        </div>
+
+        <div style="padding:16px;">
+          <div style="display:flex; gap:12px; align-items:flex-start;">
+            <svg width="44" height="44" viewBox="0 0 24 24" aria-hidden="true">
+              <rect width="24" height="24" rx="6" fill="#fff" stroke="#002f5c" stroke-opacity="0.06"></rect>
+              <path d="M6 16c2-3 6-4 10-2" stroke="#005706" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" fill="none"></path>
+            </svg>
+            <div>
+              <div style="font-weight:700; color:var(--brand-head)">Gentle on sleep</div>
+              <div class="muted">Formulated to avoid late-day stimulation — respects circadian principles.</div>
+            </div>
+          </div>
+        </div>
+
+        <div style="padding:16px;">
+          <div style="display:flex; gap:12px; align-items:flex-start;">
+            <svg width="44" height="44" viewBox="0 0 24 24" aria-hidden="true">
+              <rect width="24" height="24" rx="6" fill="#fff" stroke="#002f5c" stroke-opacity="0.06"></rect>
+              <path d="M12 6v6l3 3" stroke="#002f5c" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" fill="none"></path>
+            </svg>
+            <div>
+              <div style="font-weight:700; color:var(--brand-head)">Premium sourcing</div>
+              <div class="muted">Third-party audits and clean-label transparency on every batch.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- INFOGRAPHIC / SCIENCE -->
+  <section id="infographic" class="infographic" aria-labelledby="info-heading">
+    <div class="chart-area">
+      <div class="chart-title" id="info-heading">How ChronoNAD+ works — simplified</div>
+      <div class="chart-sub">A schematic timeline illustrating circadian-aligned NAD+ support</div>
+
+      <!-- Recreated infographic as inline SVG timeline -->
+      <svg width="100%" height="220" viewBox="0 0 900 220" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Timeline infographic showing morning, afternoon, evening">
+        <defs>
+          <linearGradient id="gg" x1="0" x2="1"><stop offset="0" stop-color="#e9fbf0"/><stop offset="1" stop-color="#fff9ee"/></linearGradient>
+        </defs>
+
+        <!-- background bar -->
+        <rect x="40" y="90" rx="16" width="820" height="40" fill="url(#gg)" stroke="rgba(0,47,92,0.03)"/>
+
+        <!-- three segments -->
+        <rect x="40" y="90" width="260" height="40" rx="16" fill="#f1fff6"/>
+        <rect x="300" y="90" width="320" height="40" rx="0" fill="#fffdf3"/>
+        <rect x="620" y="90" width="240" height="40" rx="16" fill="#f7fbff"/>
+
+        <!-- labels -->
+        <text x="170"  y="78" text-anchor="middle" font-family="Poppins,Cabin" font-weight="700" fill="#002f5c">Morning</text>
+        <text x="460"  y="78" text-anchor="middle" font-family="Poppins,Cabin" font-weight="700" fill="#002f5c">Afternoon</text>
+        <text x="740"  y="78" text-anchor="middle" font-family="Poppins,Cabin" font-weight="700" fill="#002f5c">Evening</text>
+
+        <!-- icons & microcopy -->
+        <g transform="translate(120,120)">
+          <circle cx="0" cy="0" r="8" fill="#005706"/>
+          <text x="20" y="5" font-size="13" font-family="Source Sans Pro">Bioavailable precursor release</text>
+        </g>
+
+        <g transform="translate(410,120)">
+          <circle cx="0" cy="0" r="8" fill="#f6a800"/>
+          <text x="20" y="5" font-size="13" font-family="Source Sans Pro">Sustained cofactor support</text>
+        </g>
+
+        <g transform="translate(690,120)">
+          <circle cx="0" cy="0" r="8" fill="#002f5c"/>
+          <text x="20" y="5" font-size="13" font-family="Source Sans Pro">Night-safe clearance</text>
+        </g>
+
+        <!-- small chart: NAD+ trend (stylized) -->
+        <polyline points="70,170 140,130 240,120 360,110 480,115 640,120 760,150" fill="none" stroke="#005706" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+        <text x="70" y="205" font-size="12" font-family="Source Sans Pro" fill="#6b6b6b">Relative NAD+ support</text>
+      </svg>
+
+      <p class="muted" style="margin-top:12px">This infographic is a conceptual depiction — ingredient selection and dosing are formulated to encourage cellular repair while aligning to circadian principles.</p>
+    </div>
+
+    <div style="padding:14px; border-left:1px dashed rgba(0,47,92,0.03); min-width:260px;">
+      <h4 style="font-family:'Poppins', 'Cabin'; color:var(--brand-head)">Key ingredients</h4>
+      <ul style="margin-top:8px; list-style:none; padding-left:0;">
+        <li style="margin-bottom:8px;"><span class="badge">NMN-Analog</span> <div class="muted" style="display:inline-block; margin-left:10px">Targeted NAD+ precursors</div></li>
+        <li style="margin-bottom:8px;"><span class="badge">ChronoMatrix</span> <div class="muted" style="display:inline-block; margin-left:10px">Timed-release matrix for steady uptake</div></li>
+        <li style="margin-bottom:8px;"><span class="badge">Cofactor Blend</span> <div class="muted" style="display:inline-block; margin-left:10px">Vitamins and polyphenols to assist cellular regeneration</div></li>
+      </ul>
+
+      <div style="margin-top:18px;">
+        <button class="btn btn-cta" onclick="openOrder()">Request sample + data sheet</button>
+        <div class="muted" style="margin-top:10px; font-size:12px">Third-party testing available on request.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA STRIP -->
+  <section class="cta-strip" role="region" aria-label="Primary call to action">
+    <div class="cta-left">
+      <h3>Try ChronoNAD+ — first sip of better days</h3>
+      <p class="muted">Limited-time sample packs available for qualifying practitioners and early adopters.</p>
+    </div>
+    <div style="display:flex; gap:12px; align-items:center;">
+      <button class="btn btn-cta" onclick="openOrder()">Get sample</button>
+      <button class="btn btn-ghost" onclick="document.getElementById('benefits').scrollIntoView()">Learn more</button>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container foot-grid">
+      <div style="min-width:220px">
+        <div style="font-weight:700; color:var(--brand-head)">CellStart</div>
+        <div class="muted" style="margin-top:6px">ChronoNAD+ — premium NAD+ support</div>
+      </div>
+
+      <div class="muted" style="flex:1; min-width:200px">
+        <div style="font-weight:700; color:var(--brand-head); margin-bottom:6px;">Contact</div>
+        <div>Email: hello@cellstart.example</div>
+        <div style="margin-top:6px">Address: 210 Wellness Ave, London / Remote</div>
+      </div>
+
+      <div style="min-width:180px">
+        <div style="font-weight:700; color:var(--brand-head); margin-bottom:6px;">Quick links</div>
+        <div><a href="#benefits">Benefits</a></div>
+        <div><a href="#infographic">Science</a></div>
+        <div style="margin-top:12px" class="muted">© CellStart — mockup only</div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ORDER MODAL (simple) -->
+  <div id="orderModal" aria-hidden="true" style="position:fixed; inset:0; display:none; align-items:center; justify-content:center; background:rgba(2,47,92,0.36); z-index:80;">
+    <div role="dialog" aria-modal="true" aria-label="Order sample dialog" style="background:white; border-radius:14px; padding:20px; width:94%; max-width:640px; box-shadow:0 30px 80px rgba(2,47,92,0.18);">
+      <div style="display:flex; justify-content:space-between; align-items:center;">
+        <h3 style="margin:0; font-family:'Poppins', 'Cabin'; color:var(--brand-head)">Request a sample</h3>
+        <button aria-label="Close" onclick="closeOrder()" style="background:transparent; border:none; font-size:20px; cursor:pointer;">✕</button>
+      </div>
+      <p class="muted" style="margin-top:8px">Submit your details and we'll follow up with pricing and a data sheet.</p>
+
+      <form id="sampleForm" style="margin-top:12px; display:grid; gap:10px;" onsubmit="submitForm(event)">
+        <input required name="name" placeholder="Full name" style="padding:12px; border-radius:8px; border:1px solid rgba(0,47,92,0.06)" />
+        <input required name="email" placeholder="Email" type="email" style="padding:12px; border-radius:8px; border:1px solid rgba(0,47,92,0.06)" />
+        <input name="organisation" placeholder="Organization (optional)" style="padding:12px; border-radius:8px; border:1px solid rgba(0,47,92,0.06)" />
+        <div style="display:flex; gap:10px;">
+          <button type="submit" class="btn btn-cta">Request sample</button>
+          <button type="button" class="btn btn-ghost" onclick="closeOrder()">Cancel</button>
+        </div>
+        <div id="formStatus" class="muted" style="font-size:13px"></div>
+      </form>
+    </div>
+  </div>
+
+</main>
+
+<script>
+  /* Minimal JS inlined - no external dependencies */
+  function openOrder(){
+    document.getElementById('orderModal').style.display = 'flex';
+    document.getElementById('orderModal').setAttribute('aria-hidden','false');
+    // focus first input for accessibility
+    setTimeout(()=>{ const input = document.querySelector('#sampleForm input[name="name"]'); if(input) input.focus(); }, 120);
+  }
+  function closeOrder(){
+    document.getElementById('orderModal').style.display = 'none';
+    document.getElementById('orderModal').setAttribute('aria-hidden','true');
+  }
+
+  function submitForm(e){
+    e.preventDefault();
+    const status = document.getElementById('formStatus');
+    status.textContent = 'Sending request…';
+    // Simulate submission (no network). We cannot perform background work per assignment.
+    setTimeout(()=>{
+      status.textContent = 'Thanks — we received your request. (Mockup: no real submission in this file.)';
+      document.getElementById('sampleForm').reset();
+    }, 900);
+  }
+
+  // close modal with escape
+  document.addEventListener('keydown', (ev)=>{
+    if(ev.key === 'Escape') closeOrder();
+  });
+
+  // small UX: ensure links that scroll to anchor also close modal
+  document.querySelectorAll('a[href^="#"]').forEach(a=>{
+    a.addEventListener('click', ()=> {
+      closeOrder();
+    });
+  });
+</script>
+</body>
+</html>
